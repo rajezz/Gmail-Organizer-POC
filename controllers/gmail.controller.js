@@ -1,6 +1,10 @@
 const axios = require("axios")
 const qs = require("querystring")
-const fs = require('fs');
+const fs = require("fs")
+const path = require("path")
+
+const { formatThread } = require("../helpers/thread-formatter")
+const { asyncForEach } = require("../helpers/common")
 
 let token
 
@@ -11,7 +15,7 @@ const getBody = () => ({
 	grant_type: "refresh_token"
 })
 
-const googleOption = (token) => ({
+const getGoogleOption = (token) => ({
 	headers: {
 		"Content-Type": "application/json",
 		Authorization: `Bearer ${token}`
@@ -38,49 +42,105 @@ const getAccessToken = async () => {
 	}
 }
 
-const formatThread = (thread) => {
-
+const fetchThread = async (id) => {
+	console.log(`Start fetching thread - ${id}`)
+	return new Promise((resolve) => {
+		setTimeout(async () => {
+			try {
+				const threadResponse = await axios.get(
+					`${THREAD_URL}/${id}`,
+					getGoogleOption(token)
+				)
+				const thread = threadResponse.data
+				resolve([null, formatThread(thread)])
+			} catch (error) {
+				console.error("fetchThread | Error catched > ", error)
+				resolve([error])
+			}
+		}, 500)
+	})
 }
 
-const fetchThread = async (id) => {
-    console.log(`Start fetching thread - ${id}`)
-    return new Promise((resolve) => {
-        setTimeout(async () => {
-            try {
-                const threadResponse = await axios.get(`${THREAD_URL}/${id}`, googleOption(token))
-                const thread = threadResponse.data
-                resolve([null, formatThread(thread)])
-            } catch (error) {
-                console.error("fetchThread | Error catched > ", error)
-                resolve([error])
-            }
-            
-        }, 500)
-        
-    })
+const fetchThreads = async (storedThreads, pageToken = "") => {
+	try {
+		console.log("fetchThreads | method invoked!!")
+		console.log("-------------------------------")
+		console.log("storedThreads | count > ", Object.keys(storedThreads).length)
+		console.log("pageToken > ", pageToken)
+
+		let allThreads = storedThreads
+
+		const threadsResponse = await axios.get(
+			`${THREAD_URL}?maxResults=500${pageToken ? `&pageToken=${pageToken}` : ``}`,
+			getGoogleOption(token)
+		)
+
+		const { threads, nextPageToken } = threadsResponse.data
+
+		console.log("Thread length > ", threads.length)
+
+		await asyncForEach(threads, async (threadInfo) => {
+			const id = threadInfo.id
+			if (allThreads[id]) {
+				console.log(`Thread - ${id} is already stored!`)
+				return
+			}
+
+			const [fetchError, thread] = await fetchThread(id)
+
+			if (fetchError) return
+			allThreads[id] = thread
+		})
+
+		return [allThreads, nextPageToken]
+	} catch (error) {
+		console.error("fetchThreads | Error catched >", error)
+		throw error
+	}
+}
+
+const getStoredThreads = (relativePath) => {
+	try {
+		const fileDate = fs.readFileSync(path.join(__dirname, relativePath))
+		return JSON.parse(fileDate)
+	} catch (error) {
+		console.error("Error catched while getting Stored Threads > ", error)
+		return {}
+	}
 }
 
 const loadThreads = async (req, res) => {
 	try {
 		console.log("method - loadThreads called")
 
+		const page_token = req.query.page_token
+			
+		let max_page = req.query.max_page ?? Number.POSITIVE_INFINITY
+
 		token = await getAccessToken()
 
-		const storedThreads = require("../threads.json")
+		let storedThreads = getStoredThreads("../threads.json")
 
-		const threadsResponse = await axios.get(THREAD_URL, googleOption(token))
+		let nextPageToken = page_token ?? "",
+			pageCount = 0
 
-		const threads = threadsResponse.data.threads
+		console.log("max_page > ", max_page)
+		do {
+			console.log("pageCount > ", pageCount)
+			;[storedThreads, nextPageToken] = await fetchThreads(storedThreads, nextPageToken)
+			pageCount++
 
-		for (let index = 0; index < 10; index++) {
-			const id = threads[index].id
-			if (storedThreads[id]) {
-				console.log(`Thread - ${id} is already stored!`)
-				break
-			}
+		} while (nextPageToken && pageCount < max_page)
 
-			await fetchThread(id)
-		}
+		// console.log("storedThreads > ", storedThreads)
+
+		// Writing the updated Thread data to the File System...
+		const saveResponse = fs.writeFileSync(
+			path.join(__dirname, "../threads.json"),
+			JSON.stringify(storedThreads, null, 2)
+		)
+
+		// console.log("FS save response > ", saveResponse)
 
 		res.status(200).send("Successfully fetched Gmail messages...")
 	} catch (error) {

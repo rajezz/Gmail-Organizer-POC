@@ -1,0 +1,138 @@
+{
+	"id": "179a295e23cb0853",
+	"historyId": "3885658",
+	"messages": [
+		{
+			"id": "179a295e23cb0853",
+			"threadId": "179a295e23cb0853",
+			"labelIds": ["CATEGORY_UPDATES", "INBOX"],
+			"snippet": "Hi Rajeswaran, This is a reminder that &quot;Freshworks Huddle, May 2021&quot; will begin in 1 day on: Date Time: May 26, 2021 02:00 PM Mumbai, Kolkata, New Delhi Join from a PC, Mac, iPad, iPhone or",
+			"payload": {
+				"partId": "",
+				"mimeType": "text/html",
+				"filename": "",
+				"headers": [
+					{
+						"name": "Delivered-To",
+						"value": "rajezzandrj@gmail.com"
+					},
+					{
+						"name": "Received",
+						"value": "by 2002:a05:6000:1c7:0:0:0:0 with SMTP id t7csp4385383wrx;        Tue, 25 May 2021 01:13:22 -0700 (PDT)"
+					},
+					{
+						"name": "X-Google-Smtp-Source",
+						"value": "ABdhPJwa19RyPtrHmCKvi8Mxrz6PdUoaq66P9jfR+Nta9JCROWdvRNDVtaq67egPsD0b/RxbSCYq"
+					},
+					{
+						"name": "X-Received",
+						"value": "by 2002:a17:906:40d1:: with SMTP id a17mr27445624ejk.43.1621930402626;        Tue, 25 May 2021 01:13:22 -0700 (PDT)"
+					},
+					{
+						"name": "ARC-Seal",
+						"value": "i=1; a=rsa-sha256; t=1621930402; cv=none;        d=google.com; s=arc-20160816;        b=uoSUCYr0dyDqAfPJq0+5fFJ8wUNAk1mrKo4Z9lAmVAVybaWxiNPVPYOJd8waDBdbV5         bZg1hoYfDMIR6HwUT3PyKGlmKqBrwlRrilSoJTF8RSs0Z5XXuQeFv78pLy9FoMHHEZeg         P8lDE/HSirpgVep1sMe0fVNdi+bOwx9J8x2tjH2XUZN+vSX8/G114kt4W10o7qgn5af5         tHdGnP1qTvgrx/GTrXi2DRl9Ip0FaihbRzZ5CBdZMgw3f8tHeEiUmhN9bI/BEbM0lsBM         Emk9mi2aRmzcLejSHZ51stSz58elVRRsaU9M0+2HsLfnIappgXsbFlwOEdDC/tQAB3Bn         IAXg=="
+					},
+					{
+						"name": "ARC-Message-Signature",
+						"value": "i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;        h=subject:message-id:to:reply-to:mime-version:from:date         :content-transfer-encoding:dkim-signature:dkim-signature;        bh=IXTrpHeVaG7d4lXFJdfIp+NIIsvxtI2cpdtjXcLKhCE=;        b=O0BzbqtCAvRMLlwrd5OKHlzlznC3YJKBhd7f3XdIsUzRtHXv8Kq04A11ouX+iuAvSD         AacmeM1PhL6R7PNNeNxmchFqv0J2qX4gm2K6GBiEJyeUsXbKDXXeE/pfaZQvtpzN9z/T         Jpy5k35lXWtPd++CDzvBax8R6EBrSL2AHxqj8R3SsczrVKulPEFJkj1yeZqqWsOQFZG3         palfKrm67yk8+Sy0Yr3mlfdRrXBVM5L6ctXnAV8kV793C0Z29zPDiNw/F1A1SPZ2BhA2         pbFEPLAkKn4dgsRLWQAgzrfsCkSOVuzAl7PSm6ghZFutU667T1M2TZC7QA0eB7VjfS5E         BTnA=="
+					},
+					{
+						"name": "ARC-Authentication-Results",
+						"value": "i=1; mx.google.com;       dkim=pass header.i=@zoom.us header.s=sg header.b=e7PhirTD;       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=GobW344q;       spf=pass (google.com: domain of bounces+21079884-a758-rajezzandrj=gmail.com@bounce-sg.zoom.us designates 149.72.199.144 as permitted sender) smtp.mailfrom=\"bounces+21079884-a758-rajezzandrj=gmail.com@bounce-sg.zoom.us\";       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=zoom.us"
+					},
+					{
+						"name": "Return-Path",
+						"value": "\u003cbounces+21079884-a758-rajezzandrj=gmail.com@bounce-sg.zoom.us\u003e"
+					},
+					{
+						"name": "Received",
+						"value": "from o5.sg.zoom.us (o5.sg.zoom.us. [149.72.199.144])        by mx.google.com with ESMTPS id rh9si16533790ejb.589.2021.05.25.01.13.22        for \u003crajezzandrj@gmail.com\u003e        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);        Tue, 25 May 2021 01:13:22 -0700 (PDT)"
+					},
+					{
+						"name": "Received-SPF",
+						"value": "pass (google.com: domain of bounces+21079884-a758-rajezzandrj=gmail.com@bounce-sg.zoom.us designates 149.72.199.144 as permitted sender) client-ip=149.72.199.144;"
+					},
+					{
+						"name": "Authentication-Results",
+						"value": "mx.google.com;       dkim=pass header.i=@zoom.us header.s=sg header.b=e7PhirTD;       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=GobW344q;       spf=pass (google.com: domain of bounces+21079884-a758-rajezzandrj=gmail.com@bounce-sg.zoom.us designates 149.72.199.144 as permitted sender) smtp.mailfrom=\"bounces+21079884-a758-rajezzandrj=gmail.com@bounce-sg.zoom.us\";       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=zoom.us"
+					},
+					{
+						"name": "DKIM-Signature",
+						"value": "v=1; a=rsa-sha256; c=relaxed/relaxed; d=zoom.us; h=content-transfer-encoding:content-type:from:mime-version:reply-to:to:subject; s=sg; bh=IXTrpHeVaG7d4lXFJdfIp+NIIsvxtI2cpdtjXcLKhCE=; b=e7PhirT DrQEnWnci2P9hKfQLqrgsiJqGIByjGwE5aKX5tdbCwmfQKdzXFH/SPsYhpng+Nfy HAOSEazKi39y80QUJQPgY/dFCn8/VBAF+dVpkUY4pUQiWXSBnxVb93fLVsUSP9A/ SJad2oCTZuho/PFy0lkNrjDahgeoUpdkbw3T9EkrlpUZXlEOnb33Gj5g1A4QiCxm FglebnhR0t0a8eTonmzuBchSUIKxGKLFp2iEiheWaWAXy1GuTDH01frwKXVGcPx+ VwVHIYsHk2Emf9R8PJsTvZsrgI84DuLTu8+CE5E9dk7aG09jJDbaUJxBno45lCkw 0D+xrJP33ALMzQA=="
+					},
+					{
+						"name": "DKIM-Signature",
+						"value": "v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info; h=content-transfer-encoding:content-type:from:mime-version:reply-to:to:subject:x-feedback-id; s=smtpapi; bh=IXTrpHeVaG7d4lXFJdfIp+NIIsvxtI2cpdtjXcLKhCE=; b=Go bW344qdZ5RYDnjAnqR1nEuUI5k9zP4a3X0MvvOnAveNhz6l0iHo3fZjxhc0k93bI LuTNDsbd4kBH5GsJ+T5yBGFfH1h4WsnGj1ny6rgUgO9oYtjoiybpGIETTOv++2+J oV2whzTQq+3t60JlmR4vyFXJ0qGmUHeFHJNPdHGWg="
+					},
+					{
+						"name": "Received",
+						"value": "by filter1525p1iad2.sendgrid.net with SMTP id filter1525p1iad2-25462-60ACB1A1-E        2021-05-25 08:13:21.517573387 +0000 UTC m=+552469.040885708"
+					},
+					{
+						"name": "Received",
+						"value": "from MjEwNzk4ODQ (unknown) by geopod-ismtpd-2-0 (SG) with HTTP id MfMQvuBnTQyyEYVa1fJmiw Tue, 25 May 2021 08:13:21.510 +0000 (UTC)"
+					},
+					{
+						"name": "Content-Transfer-Encoding",
+						"value": "quoted-printable"
+					},
+					{
+						"name": "Content-Type",
+						"value": "text/html; charset=UTF-8"
+					},
+					{
+						"name": "Date",
+						"value": "Tue, 25 May 2021 08:13:21 +0000 (UTC)"
+					},
+					{
+						"name": "From",
+						"value": "Juhi Singh \u003cno-reply@zoom.us\u003e"
+					},
+					{
+						"name": "Mime-Version",
+						"value": "1.0"
+					},
+					{
+						"name": "Reply-to",
+						"value": "Juhi Singh \u003cjuhi.singh@freshworks.com\u003e"
+					},
+					{
+						"name": "To",
+						"value": "rajezzandrj@gmail.com"
+					},
+					{
+						"name": "Message-ID",
+						"value": "\u003cMfMQvuBnTQyyEYVa1fJmiw@geopod-ismtpd-2-0\u003e"
+					},
+					{
+						"name": "Subject",
+						"value": "Reminder: You’re registered for Freshworks Huddle!"
+					},
+					{
+						"name": "X-SG-EID",
+						"value": "rL0rdTkeMBYvA5ZyVvCvJf65NkCuow8kjZ5I14mNiVzk67fk38cgbh6F5HooNVR74Q9YEHBase8uhk ffT/+q0vilNBQMbQER+ktdad0s7oJ1BA0cNXZ8CVDVu9MYPqlQvg7y8b/FjJ8sTL1P7X0k1ppk1OXl GcVkCAlS0vTvPdLMamFUSmhcTW69I40Fo6ZgEfwzdZ3pvlB73AqMl5KWtu8tfvXkB9d3w3ZZIRk8IK E="
+					},
+					{
+						"name": "X-SG-ID",
+						"value": "FQe39T3hAAZVe+nLebR7eF4z1zICzYSnprHuLPD6htCEFDhV0rNveBVBWue8hIowOb7QXt/7o9qJB5 +s0KYyYRQSwZNJbcckTl8IM06GA7iQ6oyr1CJxCEmLmsR9XlpiPVRz1wL0F9wkriQprGoC3EOpKW43 H9rAi7bnEL85CLDMwK5Y3Gj3ekl38X8mp9vmWSJ+xoqONXXz7zesC5DoaIGG5QX1uEdVEIlEpb+LQn N04nJ/k/IDEKlbbeXi83/Wsp1cpUkGbJ4LfCz/7bkMlzBp+hG3adDu2+k25mJCbJ38xzR+i5HamZX8 o0ETN+KidO2IhYXAWRsejt2XegvhManehUkKSehvl5k2qtytE9E+6aVSXWUz5BAydqgsk6fkFaOjWQ KEJFCvBGYZByEZ3qGhB6BnPIZaD1qYISwetOakRgLUQDFbjr73/zit0NOkkSMKlZWJL61zvCxyQdQO xloUW/cdiIWq0Jyy9T8FN3sfLPA3USjFmixTd15KUHuiVB/aK+WuzrPIS8/l5B/ysg=="
+					},
+					{
+						"name": "X-Entity-ID",
+						"value": "7mxhBNMkQ9yfwz0A5+NG7Q=="
+					},
+					{
+						"name": "X-Feedback-ID",
+						"value": "21079884:hB5k2wC3Le5o6mlwAZOE36naIddpmBgVJxu+FROsYf8=:Rs3CaxKcOsRLXaADYD8l/AUCZlSsiDwHK+1Q3OhlABo=:SG"
+					}
+				],
+				"body": {
+					"size": 3250,
+					"data": "PGh0bWw-DQo8aGVhZD4NCgk8c3R5bGU-DQoJaHRtbCxib2R5ew0KCQlmb250LWZhbWlseTogIkhlbHZldGljYSBOZXVlIixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZjsNCgkJZm9udC1zaXplOiAxNHB4Ow0KCQlsaW5lLWhlaWdodDogMjJweDsNCgl9DQoJLmN1c3RvbV9sb2dvIHsNCgkJbWFyZ2luOiAwIGF1dG87DQoJCW1heC13aWR0aDo2NDBweDsNCgl9DQoJLmltZy1yZXNwb25zaXZlIHsNCgkJZGlzcGxheTogYmxvY2s7DQoJCWhlaWdodDogYXV0bzsNCgkJbWF4LWhlaWdodDogMjAwcHg7DQoJCWFsaWduOiBtaWRkbGU7DQoJfQ0KCS5jdXN0b21faW1hZ2Ugew0KCQlmbG9hdDogcmlnaHQ7DQoJCW1hcmdpbjogMTBweCAwIDEwcHggMTBweDsNCgkJbWF4LXdpZHRoOjEwMHB4Ow0KCX0NCgkuY3NzVGFiew0KCSAgICBtYXJnaW4tbGVmdDoyNHB4Ow0KCX0NCgk8L3N0eWxlPg0KCTxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtVHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0Zi04IiAvPg0KPC9oZWFkPg0KPGJvZHk-IA0KPHRhYmxlIHN0eWxlPSJ3aWR0aDoxMDAlO2JhY2tncm91bmQtY29sb3I6I2ZmZiI-DQo8dHIgc3R5bGU9ImhlaWdodDoxMjBweCI-DQoJPHRkPjxpbWcgY2xhc3M9ImN1c3RvbV9sb2dvIGltZy1yZXNwb25zaXZlIiBzcmM9Imh0dHA6Ly9mcmVzaHdvcmtzLnpvb20udXMvd19wLzk5MzE1ODQ0NjIzL2MyNWU3ZmVhLWFiOGEtNGUzMi1hODFiLWJlZDRhZmNhMGZiZC5qcGciIGFsdD0iV2ViaW5hciBMb2dvIi8-PC90ZD4NCjwvdHI-DQo8dHIgc3R5bGU9ImhlaWdodDo1MHB4Ij4NCgk8dGQ-Jm5ic3A7PC90ZD4NCjwvdHI-DQo8dHI-DQoJPHRkICA-SGkgUmFqZXN3YXJhbiwgPGJyPg0KPGJyPg0KVGhpcyBpcyBhIHJlbWluZGVyIHRoYXQgIkZyZXNod29ya3MgSHVkZGxlLCBNYXkgMjAyMSIgd2lsbCBiZWdpbiBpbiAxIGRheSBvbjo8YnI-DQoJRGF0ZSBUaW1lOiBNYXkgMjYsIDIwMjEgMDI6MDAgUE0gTXVtYmFpLCBLb2xrYXRhLCBOZXcgRGVsaGkgPGJyPg0KPGJyPg0KSm9pbiBmcm9tIGEgUEMsIE1hYywgaVBhZCwgaVBob25lIG9yIEFuZHJvaWQgZGV2aWNlOiA8YnI-DQo8ZGl2IGNsYXNzPSJjc3NUYWIiPg0KICAgIDxhIGhyZWY9Imh0dHBzOi8vZnJlc2h3b3Jrcy56b29tLnVzL3cvOTkzMTU4NDQ2MjM_dGs9UjhvZWN2T09sZ015NGdXTFpmTXp4X3BuekNiM3h5VUdKOEh1WkY4b2VaMC5EUUlBQUFBWEg2LUdEeFpyVEdVM1gxTTVPRkU0UTJGRGNWTldUMnBpTXpaM0FBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUEmcHdkPVl6aGhjM1lyYTBaMFYyUmphR1pNTW5SR1VIRXJRVDA5JnV1aWQ9V05fWXJpcnI1ejdTUGVSMDNySEpZZWt0QSI-Q2xpY2sgSGVyZSB0byBKb2luPC9hPiAgPGJyPg0KICAgIE5vdGU6IFRoaXMgbGluayBzaG91bGQgbm90IGJlIHNoYXJlZCB3aXRoIG90aGVyczsgaXQgaXMgdW5pcXVlIHRvIHlvdS48YnI-DQoJCVBhc3Njb2RlOiBQYUdBMFR2czxicj4NCiAgICAJPGEgaHJlZj0iaHR0cHM6Ly9mcmVzaHdvcmtzLnpvb20udXMvd2ViaW5hci90SjB1ZHV5Z3FqOHNHTmVIWDI1ak53ZUI2VDdLZ2RuXzZmeDMvaWNzP3VzZXJfaWQ9a0xlN19TOThROENhQ3FTVk9qYjM2dyZ0eXBlPWljYWxlbmRhciI-QWRkIHRvIENhbGVuZGFyPC9hPiAmbmJzcDsgIDxhIGhyZWY9Imh0dHBzOi8vZnJlc2h3b3Jrcy56b29tLnVzL3dlYmluYXIvdEowdWR1eWdxajhzR05lSFgyNWpOd2VCNlQ3S2dkbl82ZngzL2NhbGVuZGFyL2dvb2dsZS9hZGQ_dXNlcl9pZD1rTGU3X1M5OFE4Q2FDcVNWT2piMzZ3JnR5cGU9Z29vZ2xlIj5BZGQgdG8gR29vZ2xlIENhbGVuZGFyPC9hPiAmbmJzcDsgIDxhIGhyZWY9Imh0dHBzOi8vZnJlc2h3b3Jrcy56b29tLnVzL3dlYmluYXIvdEowdWR1eWdxajhzR05lSFgyNWpOd2VCNlQ3S2dkbl82ZngzL2ljcz91c2VyX2lkPWtMZTdfUzk4UThDYUNxU1ZPamIzNncmdHlwZT15YWhvbyI-QWRkIHRvIFlhaG9vIENhbGVuZGFyPC9hPg0KPC9kaXY-DQo8YnI-DQoJT3Igam9pbiBieSBwaG9uZTogDQoJPGRpdiBjbGFzcz0iY3NzVGFiIj4NCgkJPGJyPlVTOiArMSAzNDYgMjQ4IDc3OTkgIG9yICsxIDY0NiA1NTggODY1NiAgb3IgKzEgNjY5IDkwMCA2ODMzICBvciArMSAyNTMgMjE1IDg3ODIgIG9yICsxIDMwMSA3MTUgODU5MiAgb3IgKzEgMzEyIDYyNiA2Nzk5IDxicj5GcmFuY2U6ICszMyAxIDcwOTUgMDEwMyAgb3IgKzMzIDEgNzA5NSAwMzUwICBvciArMzMgMSA4Njk5IDU4MzEgIG9yICszMyAxIDcwMzcgMjI0NiAgb3IgKzMzIDEgNzAzNyA5NzI5IDxicj5Jc3JhZWw6ICs5NzIgNTUgMzMwIDE3NjIgIG9yICs5NzIgMyA5NzggNjY4OCA8YnI-R2VybWFueTogKzQ5IDY5IDM4MDcgOTg4MyAgb3IgKzQ5IDY5NSAwNTAgMjU5NiAgb3IgKzQ5IDY5IDcxMDQgOTkyMiAgb3IgKzQ5IDMwIDU2NzkgNTgwMCA8YnI-QXVzdHJhbGlhOiArNjEgNyAzMTg1IDM3MzAgIG9yICs2MSA4IDYxMTkgMzkwMCAgb3IgKzYxIDggNzE1MCAxMTQ5ICBvciArNjEgMiA4MDE1IDYwMTEgIG9yICs2MSAzIDcwMTggMjAwNSA8YnI-VW5pdGVkIEtpbmdkb206ICs0NCAyMDggMDgwIDY1OTIgIG9yICs0NCAzMzAgMDg4IDU4MzAgIG9yICs0NCAxMzEgNDYwIDExOTYgIG9yICs0NCAyMDMgNDgxIDUyMzcgIG9yICs0NCAyMDMgNDgxIDUyNDAgIG9yICs0NCAyMDMgOTAxIDc4OTUgIG9yICs0NCAyMDggMDgwIDY1OTEgDQoJCTxicj4NCiAgICAJV2ViaW5hciBJRDogOTkzIDE1ODQgNDYyMyA8YnI-DQogICAgICAgIFBhc3Njb2RlOiA0NzI5MzM0OTxicj4NCiAgICAJSW50ZXJuYXRpb25hbCBudW1iZXJzIGF2YWlsYWJsZTogPGEgaHJlZj0iaHR0cHM6Ly9mcmVzaHdvcmtzLnpvb20udXMvdS9hQUp5SkZnNGoiPmh0dHBzOi8vZnJlc2h3b3Jrcy56b29tLnVzL3UvYUFKeUpGZzRqPC9hPg0KCTwvZGl2Pg0KCTxicj4NCg0KDQo8YnI-DQo8YnI-DQo8YnI-DQoJCVlvdSBjYW4gPGEgaHJlZj0iaHR0cHM6Ly9mcmVzaHdvcmtzLnpvb20udXMvd2ViaW5hci9yZWdpc3Rlci90SjB1ZHV5Z3FqOHNHTmVIWDI1ak53ZUI2VDdLZ2RuXzZmeDMvc3VjY2Vzcz9hY3Q9Y2FuY2VsJnVzZXJfaWQ9a0xlN19TOThROENhQ3FTVk9qYjM2dyIgdGFyZ2V0PSJfYmxhbmsiPmNhbmNlbDwvYT4geW91ciByZWdpc3RyYXRpb24gYXQgYW55IHRpbWUuPGJyPg0KPC90ZD4JDQo8L3RyPg0KDQo8dHIgc3R5bGU9ImhlaWdodDo0MHB4Ij4NCgk8dGQ-Jm5ic3A7PC90ZD4NCjwvdHI-DQo8L3RhYmxlPg0KPC9ib2R5Pg0KPC9odG1sPg=="
+				}
+			},
+			"sizeEstimate": 9207,
+			"historyId": "3885658",
+			"internalDate": "1621930401000"
+		}
+	]
+}
