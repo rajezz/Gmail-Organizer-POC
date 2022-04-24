@@ -125,22 +125,20 @@ const loadThreads = async (req, res) => {
 			pageCount = 0
 
 		console.log("max_page > ", max_page)
+		
 		do {
 			console.log("pageCount > ", pageCount)
 			;[storedThreads, nextPageToken] = await fetchThreads(storedThreads, nextPageToken)
 			pageCount++
 
+			// Writing the updated Thread data to the File System...
+			fs.writeFileSync(
+				path.join(__dirname, "../threads.json"),
+				JSON.stringify(storedThreads, null, 2)
+			)
 		} while (nextPageToken && pageCount < max_page)
 
-		// console.log("storedThreads > ", storedThreads)
-
-		// Writing the updated Thread data to the File System...
-		const saveResponse = fs.writeFileSync(
-			path.join(__dirname, "../threads.json"),
-			JSON.stringify(storedThreads, null, 2)
-		)
-
-		// console.log("FS save response > ", saveResponse)
+		console.log("Fetched all the required threads successfully!!")
 
 		res.status(200).send("Successfully fetched Gmail messages...")
 	} catch (error) {
