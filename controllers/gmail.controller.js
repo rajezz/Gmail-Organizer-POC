@@ -3,26 +3,11 @@ const qs = require("querystring")
 const fs = require("fs")
 const path = require("path")
 
-const { formatThread } = require("../helpers/thread-formatter")
+const { formatThread } = require("../helpers/thread")
 const { asyncForEach } = require("../helpers/common")
+const { getBody, getGoogleOption, THREAD_URL } = require("../helpers/api")
 
 let token
-
-const getBody = () => ({
-	refresh_token: process.env.REFRESH_TOKEN,
-	client_id: process.env.CLIENT_ID,
-	client_secret: process.env.CLIENT_SECRET,
-	grant_type: "refresh_token"
-})
-
-const getGoogleOption = (token) => ({
-	headers: {
-		"Content-Type": "application/json",
-		Authorization: `Bearer ${token}`
-	}
-})
-
-const THREAD_URL = "https://gmail.googleapis.com/gmail/v1/users/me/threads"
 
 const getAccessToken = async () => {
 	try {
@@ -42,8 +27,8 @@ const getAccessToken = async () => {
 	}
 }
 
-const fetchThread = async (id) => {
-	console.log(`Start fetching thread - ${id}`)
+const fetchThread = async (id, index) => {
+	console.log(`Start fetching thread - ${id} - count > ${index}`)
 	return new Promise((resolve) => {
 		setTimeout(async () => {
 			try {
@@ -79,14 +64,16 @@ const fetchThreads = async (storedThreads, pageToken = "") => {
 
 		console.log("Thread length > ", threads.length)
 
-		await asyncForEach(threads, async (threadInfo) => {
+		console.log("nextPageToken > ", nextPageToken)
+
+		await asyncForEach(threads, async (threadInfo, index) => {
 			const id = threadInfo.id
 			if (allThreads[id]) {
 				console.log(`Thread - ${id} is already stored!`)
 				return
 			}
 
-			const [fetchError, thread] = await fetchThread(id)
+			const [fetchError, thread] = await fetchThread(id, index)
 
 			if (fetchError) return
 			allThreads[id] = thread
@@ -114,7 +101,7 @@ const loadThreads = async (req, res) => {
 		console.log("method - loadThreads called")
 
 		const page_token = req.query.page_token
-			
+
 		let max_page = req.query.max_page ?? Number.POSITIVE_INFINITY
 
 		token = await getAccessToken()
@@ -125,7 +112,7 @@ const loadThreads = async (req, res) => {
 			pageCount = 0
 
 		console.log("max_page > ", max_page)
-		
+
 		do {
 			console.log("pageCount > ", pageCount)
 			;[storedThreads, nextPageToken] = await fetchThreads(storedThreads, nextPageToken)
@@ -147,4 +134,19 @@ const loadThreads = async (req, res) => {
 	}
 }
 
+const countStoredThreads = async (req, res) => {
+	try {
+		let storedThreads = getStoredThreads("../threads.json")
+		res.status(200).send({ threadCount: Object.keys(storedThreads).length })
+	} catch (error) {
+		console.error("countStoredThreads | Error catched", error)
+		return res.status(500).send(error.message ?? "Couldn't count Threads")
+	}
+}
+
+const formatThreads = () => {
+
+}
+
 exports.loadThreads = loadThreads
+exports.countStoredThreads = countStoredThreads
