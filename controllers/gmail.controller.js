@@ -144,9 +144,19 @@ const countStoredThreads = async (req, res) => {
 	}
 }
 
-const formatThreads = () => {
-
+const formatThreads = async (req, res) => {
+	try {
+		let storedThreads = getStoredThreads("../threads.json")
+		
+		res.status(200).send({ threadCount: Object.keys(storedThreads).length })
+	} catch (error) {
+		console.error("countStoredThreads | Error catched", error)
+		return res.status(500).send(error.message ?? "Couldn't count Threads")
+	}
 }
 
-exports.loadThreads = loadThreads
-exports.countStoredThreads = countStoredThreads
+exports = {
+	loadThreads,
+	countStoredThreads,
+	formatThreads
+}
