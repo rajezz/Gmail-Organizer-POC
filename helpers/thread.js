@@ -42,14 +42,32 @@ const formatThread = (thread) => {
 	let formattedThread = { messages: [] }
 	formattedThread = Object.assign(formattedThread, filterObject(thread, threadMap))
 	thread.messages.map((message) => {
-        formattedThread.messages.push({
+		formattedThread.messages.push({
 			...filterObject(message, messageMap),
 			...filterArray(message.payload.headers, messageHeadersMap)
 		})
-    })
-    return formattedThread
+	})
+	return formattedThread
+}
+
+const extractUserInfo = (userStr) => {
+	try {
+		const emailRegMatch = userStr.match(/<[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*>/g)
+
+		if (!(Array.isArray(emailRegMatch) && emailRegMatch.length > 0)) throw new Error("Couldn't find a Valid Email from the string!")
+
+		const email = emailRegMatch[0].replace("<", "").replace(">", "")
+		const name = userStr.replace(emailRegMatch[0], "").trim()
+		return { name, email }
+	} catch (error) {
+		console.error("extractUserInfo | Error catched > ", error)
+		return {
+			name: "N/A",
+			email: "N/A",
+		}
+	}
 }
 
 module.exports = {
-	formatThread
+	formatThread, extractUserInfo
 }

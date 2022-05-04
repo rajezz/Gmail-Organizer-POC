@@ -7,8 +7,6 @@ const { formatThread } = require("../helpers/thread")
 const { asyncForEach } = require("../helpers/common")
 const { getBody, getGoogleOption, THREAD_URL } = require("../helpers/api")
 
-const { Thread } = require("../models")
-
 let token
 
 const getAccessToken = async () => {
@@ -88,15 +86,7 @@ const fetchThreads = async (storedThreads, pageToken = "") => {
 	}
 }
 
-const getStoredThreads = (relativePath) => {
-	try {
-		const fileDate = fs.readFileSync(path.join(__dirname, relativePath))
-		return JSON.parse(fileDate)
-	} catch (error) {
-		console.error("Error catched while getting Stored Threads > ", error)
-		return {}
-	}
-}
+
 
 const loadThreads = async (req, res) => {
 	try {
@@ -146,26 +136,6 @@ const countStoredThreads = async (req, res) => {
 	}
 }
 
-const formatThreads = async (req, res) => {
-	try {
-		let storedThreads = getStoredThreads("../threads.json")
-
-		Object.values(storedThreads).forEach((threadInfo) => {
-			let threadDocument = new Thread({
-				threadId: threadInfo.threadId,
-				threadHistoryId: threadInfo.threadHistoryId,
-			})
-			threadInfo.message.forEach(messageInfo => {
-				
-			})
-})
-		
-		res.status(200).send({ threadCount: Object.keys(storedThreads).length })
-	} catch (error) {
-		console.error("countStoredThreads | Error catched", error)
-		return res.status(500).send(error.message ?? "Couldn't count Threads")
-	}
-}
 
 exports = {
 	loadThreads,
