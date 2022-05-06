@@ -1,11 +1,10 @@
 const express = require("express");
-
 const bodyParser = require("body-parser");
 const logger = require("morgan");
 const chalk = require("chalk");
 const cors = require("cors");
-const path = require("path");
-const fs = require("fs");
+
+const mongodbConnect = require("./config/db")
 
 // import * as Sentry from "@sentry/node";
 // import * as Tracing from "@sentry/tracing";
@@ -59,17 +58,20 @@ app.use(
   })
 );
 
+// Connect to the MongoDB database...
+mongodbConnect()
+
 app.use(cors());
 //console.log('Setting up Sentry Error reporting');
 //app.use(raven.errorHandler());
 
-const apiRoutes = require("./routes")
+const apiRoutes = require("./routes");
 
 app.use("/api", apiRoutes)
 
 app.use((err, req, res, next) => {
-	console.error(err.stack)
-	res.status(500).send("No endpoint defined.")
+  console.error(err.stack)
+  res.status(500).send("No endpoint defined.")
 })
 
 /**

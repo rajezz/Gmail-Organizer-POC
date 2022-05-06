@@ -5,8 +5,8 @@ const {
 
 // Subdocument...
 const MessageSchema = new Schema({
-	messageId: { type: String, required: false, unique: true },
-	messageHistoryId: { type: String, required: false },
+	messageId: { type: String, required: true, unique: true },
+	messageHistoryId: { type: String },
 	from: { name: String, email: String },
 	labels: { type: [String] },
 	description: { type: String, required: true },
@@ -15,8 +15,8 @@ const MessageSchema = new Schema({
 
 const ThreadSchema = new Schema(
 	{
-		threadId: { type: String, required: false, unique: true },
-		threadHistoryId: { type: String, required: false },
+		threadId: { type: String, required: true, unique: true },
+		threadHistoryId: { type: String },
 		messages: { type: [MessageSchema], default: [] },
 		user: {
 			name: String,

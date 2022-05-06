@@ -107,7 +107,7 @@ const loadThreads = async (req, res) => {
 
 		do {
 			console.log("pageCount > ", pageCount)
-			;[storedThreads, nextPageToken] = await fetchThreads(storedThreads, nextPageToken)
+				;[storedThreads, nextPageToken] = await fetchThreads(storedThreads, nextPageToken)
 			pageCount++
 
 			// Writing the updated Thread data to the File System...
@@ -126,19 +126,7 @@ const loadThreads = async (req, res) => {
 	}
 }
 
-const countStoredThreads = async (req, res) => {
-	try {
-		let storedThreads = getStoredThreads("../threads.json")
-		res.status(200).send({ threadCount: Object.keys(storedThreads).length })
-	} catch (error) {
-		console.error("countStoredThreads | Error catched", error)
-		return res.status(500).send(error.message ?? "Couldn't count Threads")
-	}
-}
+module.exports = {
+	loadThreads
 
-
-exports = {
-	loadThreads,
-	countStoredThreads,
-	formatThreads
 }

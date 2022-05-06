@@ -1,10 +1,10 @@
 const { extractUserInfo } = require("../helpers/thread");
 const { sendResponse } = require("../helpers/common");
-const { getStoredThreads, validateAndSaveDoc } = require("../services/thread");
+const { getStoredThreads, validateAndSaveDoc } = require("../services/thread.service");
 
 const formatThreads = async (req, res) => {
     try {
-        let storedThreads = getStoredThreads("../threads.json")
+        let storedThreads = getStoredThreads("../sample-threads.json")
 
         for (const threadInfo of Object.values(storedThreads)) {
             let formattedThread = {
@@ -15,9 +15,9 @@ const formatThreads = async (req, res) => {
             let firstMessageRead = false
             threadInfo.messages.forEach(messageInfo => {
                 const user = extractUserInfo(messageInfo.from)
-                
+
                 const { messageId, messageHistoryId, subject, description, labels } = messageInfo
-                
+
                 const date = Date.parse(messageInfo.date) ? new Date(messageInfo.date).toUTCString() : new Date().toUTCString()
 
                 // Check whether the message is first...
@@ -36,6 +36,8 @@ const formatThreads = async (req, res) => {
                 })
             })
 
+            console.log("Formatted thread content > ", formattedThread)
+
             await validateAndSaveDoc(formattedThread)
         }
         return sendResponse(res, 200, "Successfully stored the data in DB")
@@ -45,6 +47,16 @@ const formatThreads = async (req, res) => {
     }
 }
 
+const countStoredThreads = async (req, res) => {
+    try {
+        let storedThreads = getStoredThreads("../threads.json")
+        res.status(200).send({ threadCount: Object.keys(storedThreads).length })
+    } catch (error) {
+        console.error("countStoredThreads | Error catched", error)
+        return res.status(500).send(error.message ?? "Couldn't count Threads")
+    }
+}
+
 module.exports = {
-    formatThreads
+    formatThreads, countStoredThreads
 }

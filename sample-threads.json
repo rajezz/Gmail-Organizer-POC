@@ -1,10 +1,4 @@
-const { expect } = require("chai")
-const { it } = require("mocha")
-const proxyquire = require("proxyquire").noCallThru();
-
-const mongodbConnect = require("../../config/db")
-
-const getStoredThreadsStub = () => ({
+{
     "1806efeff1c0ba93": {
         "messages": [
             {
@@ -27,29 +21,4 @@ const getStoredThreadsStub = () => ({
         "threadId": "1806efeff1c0ba93",
         "threadHistoryId": "4363897"
     }
-})
-
-const validateAndSaveDocStub = () => { }
-const sendResponseStub = (res, statusCode, message) => {
-    console.error("Message >", message)
-    return statusCode}
-
-const { formatThreads } = proxyquire("../../controllers/thread.controller", {
-    "../helpers/common": { sendResponse: sendResponseStub }
-})
-
-describe("thread controller", () => {
-    describe("formatThreads", () => {
-        beforeEach(()=>{
-            mongodbConnect()
-        })
-        it("Should return true", async () => {
-            try {
-                const response = await formatThreads({}, {})
-                expect(response).to.be.equal(200)
-            } catch (error) {
-                throw new Error(error)
-            }
-        })
-    })
-})
+}
