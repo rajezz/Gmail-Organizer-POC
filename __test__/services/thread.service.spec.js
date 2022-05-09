@@ -35,7 +35,7 @@ describe("thread Service", () => {
 
             const response = await validateAndSaveDoc(thread)
             expect(response).to.be.true
-        }) */
+        })
         it("Should return false | no threadId", async () => {
             const thread = {
                 threadId: '1806efeff1c0ba93',
@@ -60,6 +60,6 @@ describe("thread Service", () => {
 
             const response = await validateAndSaveDoc(thread)
             expect(response).to.be.false
-        })
+        }) */
     })
 })

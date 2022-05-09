@@ -18,6 +18,10 @@ const messageHeadersMap = {
 	Subject: "subject"
 }
 
+const EMAIL_USERNAME_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@/g
+const EMAIL_ONLY_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/g
+const EMAIL_REGEX = /<[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*>/g
+
 const filterObject = (obj, keyMap) => {
 	let result = {}
 	Object.keys(obj).forEach((key) => {
@@ -52,10 +56,15 @@ const formatThread = (thread) => {
 
 const extractUserInfo = (userStr) => {
 	try {
-		const emailRegMatch = userStr.match(/<[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*>/g)
+		if (EMAIL_ONLY_REGEX.test(userStr))
+			return {
+				name: userStr.match(EMAIL_USERNAME_REGEX)[0].replace("@", ""),
+				email: userStr
+			}
 
-		if (!(Array.isArray(emailRegMatch) && emailRegMatch.length > 0)) throw new Error("Couldn't find a Valid Email from the string!")
+		if (!EMAIL_REGEX.test(userStr)) throw new Error("Invalid email format")
 
+		const emailRegMatch = userStr.match(EMAIL_REGEX)
 		const email = emailRegMatch[0].replace("<", "").replace(">", "")
 		const name = userStr.replace(emailRegMatch[0], "").trim()
 		return { name, email }
@@ -63,11 +72,12 @@ const extractUserInfo = (userStr) => {
 		console.error("extractUserInfo | Error catched > ", error)
 		return {
 			name: "N/A",
-			email: "N/A",
+			email: "N/A"
 		}
 	}
 }
 
 module.exports = {
-	formatThread, extractUserInfo
+	formatThread,
+	extractUserInfo
 }

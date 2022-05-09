@@ -34,22 +34,22 @@ const sendResponseStub = (res, statusCode, message) => {
     console.error("Message >", message)
     return statusCode}
 
-const { formatThreads } = proxyquire("../../controllers/thread.controller", {
+const { formatAndStoreThreads } = proxyquire("../../controllers/thread.controller", {
     "../helpers/common": { sendResponse: sendResponseStub }
 })
 
-describe("thread controller", () => {
-    describe("formatThreads", () => {
+/* describe("thread controller", () => {
+    describe("formatAndStoreThreads", () => {
         beforeEach(()=>{
             mongodbConnect()
         })
         it("Should return true", async () => {
             try {
-                const response = await formatThreads({}, {})
+                const response = await formatAndStoreThreads({}, {})
                 expect(response).to.be.equal(200)
             } catch (error) {
                 throw new Error(error)
             }
         })
     })
-})
+}) */
